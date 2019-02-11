@@ -10,7 +10,7 @@ var searchString = process.argv.slice(3).join(" ");
 var fs = require("fs");
 
 if (searchType === "do-what-it-says") {
-    fs.appendFile("log.txt", searchType + "\r\n", function (err) {
+    fs.appendFile("log.txt", "\n\n\n"+searchType, function (err) {
         if (err) {
             return console.log(err);
         };
@@ -35,7 +35,7 @@ function liri() {
             .then(function (response) {
                 var concertHeader = "----------------------------------------------\nUpcoming concerts for " + response.data[0].lineup[0] + ":\n----------------------------------------------";
                 console.log(concertHeader);
-                fs.appendFile("log.txt", searchType + "\n" + concertHeader+"\n", function (err) {
+                fs.appendFile("log.txt", "\n\n\n"+searchType +" - "+searchString +"\n" + concertHeader+"\n", function (err) {
                     if (err) {
                         return console.log(err);
                     };
